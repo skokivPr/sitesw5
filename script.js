@@ -468,7 +468,13 @@ function createLinkButton(title, markerColor, icon, url) {
         div.classList.add("panorama-button");
     }
 
+    if (title.includes("FCLM PORTAL")) {
+        div.classList.add("fclm-portal-button");
+    }
 
+    if (title.includes("AAP")) {
+        div.classList.add("aap-button");
+    }
 
     const markerClasses = markerColor ? `marker marker-${markerColor}` : "";
 
@@ -513,6 +519,10 @@ function createLinkButton(title, markerColor, icon, url) {
             iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:delivery-truck-cargo.svg" alt="FMC Track"></span>`;
         } else if (title.includes("FMC")) {
             iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:antenna.svg" alt="FMC"></span>`;
+        } else if (title.includes("FCLM PORTAL")) {
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/vscode-icons:file-type-befunge.svg" alt="FCLM Portal"></span>`;
+        } else if (title.includes("AAP")) {
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:app-window-code.svg" alt="AAP"></span>`;
         } else {
             iconHTML = `<span class="link-button-icon"><i class="fas ${icon}"></i></span>`;
         }
@@ -530,8 +540,15 @@ function createLinkButton(title, markerColor, icon, url) {
     ${iconHTML}
   `;
 
+    // Check if it's a placeholder button
+    if (title.includes("PLACEHOLDER")) {
+        div.classList.add("placeholder-button");
+        div.style.cursor = "default";
+        div.style.opacity = "0.3";
+    }
+
     // Add click handler if URL is provided
-    if (url) {
+    if (url && url !== "#") {
         div.style.cursor = "pointer";
 
         // Left click - open in new tab
@@ -700,6 +717,13 @@ function createDashboard() {
     rightGroups.forEach((group, index) => {
         rightSection.appendChild(createGroupCard(group));
     });
+
+    // Add additional groups to right section
+    if (window.additionalGroups) {
+        window.additionalGroups.forEach((group, index) => {
+            rightSection.appendChild(createGroupCard(group));
+        });
+    }
 
     // Assemble the app
     mainGrid.appendChild(leftSection);
