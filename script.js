@@ -468,7 +468,13 @@ function createLinkButton(title, markerColor, icon, url) {
         div.classList.add("panorama-button");
     }
 
+    if (title.includes("FCLM PORTAL")) {
+        div.classList.add("fclm-portal-button");
+    }
 
+    if (title.includes("AAP")) {
+        div.classList.add("aap-button");
+    }
 
     const markerClasses = markerColor ? `marker marker-${markerColor}` : "";
 
@@ -513,6 +519,10 @@ function createLinkButton(title, markerColor, icon, url) {
             iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:delivery-truck-cargo.svg" alt="FMC Track"></span>`;
         } else if (title.includes("FMC")) {
             iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:antenna.svg" alt="FMC"></span>`;
+        } else if (title.includes("FCLM PORTAL")) {
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/vscode-icons:file-type-befunge.svg" alt="FCLM Portal"></span>`;
+        } else if (title.includes("AAP")) {
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:app-window-code.svg" alt="AAP"></span>`;
         } else {
             iconHTML = `<span class="link-button-icon"><i class="fas ${icon}"></i></span>`;
         }
@@ -530,8 +540,15 @@ function createLinkButton(title, markerColor, icon, url) {
     ${iconHTML}
   `;
 
+    // Check if it's a placeholder button
+    if (title.includes("PLACEHOLDER")) {
+        div.classList.add("placeholder-button");
+        div.style.cursor = "default";
+        div.style.opacity = "0.3";
+    }
+
     // Add click handler if URL is provided
-    if (url) {
+    if (url && url !== "#") {
         div.style.cursor = "pointer";
 
         // Left click - open in new tab
@@ -565,7 +582,7 @@ function createGroupCard(data) {
     <div class="${gridClasses.join(" ")}">
       ${columns
             .map(
-                (column) => `
+                (_column) => `
         <div class="group-column">
         </div>
       `
@@ -689,7 +706,7 @@ function createDashboard() {
     const leftSection = document.createElement("div");
     leftSection.className = "left-section";
 
-    leftGroups.forEach((group, index) => {
+    leftGroups.forEach((group, _index) => {
         leftSection.appendChild(createGroupCard(group));
     });
 
@@ -697,9 +714,16 @@ function createDashboard() {
     const rightSection = document.createElement("div");
     rightSection.className = "right-section";
 
-    rightGroups.forEach((group, index) => {
+    rightGroups.forEach((group, _index) => {
         rightSection.appendChild(createGroupCard(group));
     });
+
+    // Add additional groups to right section
+    if (window.additionalGroups) {
+        window.additionalGroups.forEach((group, _index) => {
+            rightSection.appendChild(createGroupCard(group));
+        });
+    }
 
     // Assemble the app
     mainGrid.appendChild(leftSection);
@@ -1235,7 +1259,7 @@ function hideLinkContextMenu() {
     }
 }
 
-function handleContextMenuAction(action, url, title) {
+function handleContextMenuAction(action, url, _title) {
     switch (action) {
         case 'open-foreground':
             window.open(url, '_blank');
@@ -1309,24 +1333,12 @@ class AutoChangeManager {
         this.speed = 10000; // 10 seconds
         this.images = {
             light: [
-                'https://picsum.photos/2500/1400?random=1&blur=1',
-                'https://picsum.photos/2500/1400?random=2&blur=1',
-                'https://picsum.photos/2500/1400?random=3&blur=1',
-                'https://picsum.photos/2500/1400?random=4&blur=1',
-                'https://picsum.photos/2500/1400?random=5&blur=1',
-                'https://picsum.photos/2500/1400?random=6&blur=1',
-                'https://picsum.photos/2500/1400?random=7&blur=1',
-                'https://picsum.photos/2500/1400?random=8&blur=1'
+                'https://raw.githubusercontent.com/skokivPr/img/refs/heads/main/bg-wi.png'
+
             ],
             dark: [
-                'https://picsum.photos/2500/1400?random=10&blur=2&grayscale',
-                'https://picsum.photos/2500/1400?random=11&blur=2&grayscale',
-                'https://picsum.photos/2500/1400?random=12&blur=2&grayscale',
-                'https://picsum.photos/2500/1400?random=13&blur=2&grayscale',
-                'https://picsum.photos/2500/1400?random=14&blur=2&grayscale',
-                'https://picsum.photos/2500/1400?random=15&blur=2&grayscale',
-                'https://picsum.photos/2500/1400?random=16&blur=2&grayscale',
-                'https://picsum.photos/2500/1400?random=17&blur=2&grayscale'
+                'https://raw.githubusercontent.com/skokivPr/img/refs/heads/main/technology-8280864_1920.jpg'
+
             ]
         };
         this.init();
