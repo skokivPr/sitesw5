@@ -73,6 +73,14 @@ const addonsConfig = {
             browsers: {
                 chrome: "https://chromewebstore.google.com/detail/toolcopy-side-panel/daloeclobodboapolliolbmjnhhgpgea?authuser=0&hl=pl"
             }
+        },
+        {
+            name: "Strona Startowa",
+            description: "Strona Startowa Zakładek",
+            icon: "https://lh3.googleusercontent.com/5aTghBPfzMIL6kcaGIVwY-b5slN19PQ_GEgBqzaky8l42dIOsi5iX_jDQwxdNrsMCyouuk-De48Qvmx1KTlD32xb-g=s60",
+            browsers: {
+                chrome: "https://chromewebstore.google.com/detail/moja-strona-startowa-zak%C5%82/kadencjogjklfnjkomahdhmmencknabl"
+            }
         }
     ]
 };
