@@ -4,7 +4,7 @@
 const addonsConfig = {
     recommendations: [
         {
-            name: "uBlock Origin",
+            name: "uBlock Origin Lite",
             description: "Wydajny bloker reklam i elementów śledzących",
             icon: "https://addons.mozilla.org/user-media/addon_icons/607/607454-64.png",
             browsers: {
