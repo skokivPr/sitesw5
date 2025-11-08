@@ -91,7 +91,7 @@ body[data-theme="dark"] {
         url('https://picsum.photos/2500/1400?random=16&blur=2&grayscale'),
         url('https://picsum.photos/2500/1400?random=17&blur=2&grayscale')
 }
-
+    
 /* Support for old dark theme system */
 :root[dark-theme] {
     --kolor-background: #1a1d23;
