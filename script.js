@@ -125,6 +125,10 @@ class DateTime {
         // Always show theme toggle and navigation - no authentication required
         const controlsInfo = `<div class="user-info">
             <button class="datetime-nav-button " onclick="toggleUserTheme()" id="userThemeToggle" title="Theme">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
                 <span class="theme-toggle-icon">
                     ${this.themeToggle.isDark
                 ? '<img src="https://api.iconify.design/line-md:sunny-twotone-loop.svg" alt="Light Mode">'
@@ -132,21 +136,41 @@ class DateTime {
                 </span>
             </button>
             <button class="datetime-nav-button" onclick="navigateToSubpage()" title="Narzędzia">
-                <img src="https://api.iconify.design/openmoji:puzzle-piece.svg" alt="Tools">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+                <img src="https://api.iconify.design/material-icon-theme:folder-plugin-open.svg" alt="Tools">
             </button>
             <button class="datetime-nav-button" onclick="showLoginConsole()" title="Open Login Console (Ctrl+L)">
-                <img src="https://api.iconify.design/streamline-ultimate-color:browser-page-layout.svg" alt="Console">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+                <img src="https://img.icons8.com/external-anggara-flat-anggara-putra/64/external-password-security-security-anggara-flat-anggara-putra.png" alt="Console">
             </button>
             <div class="vertical-separator orange"></div>
             <button class="datetime-nav-button" onclick="window.open('https://playliveos.carrd.co/', '_blank')" title="Visit PlayLiveOS">
-                <img src="https://api.iconify.design/streamline-ultimate-color:playlist-songs.svg" alt="Music">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+                <img src="https://img.icons8.com/papercut/60/audio-wave2.png" alt="Music">
             </button>
             <div class="vertical-separator orange"></div>
             <button class="datetime-nav-button" onclick="window.open('https://quip.com/mlWpALvnGSt5/Pliki', '_blank')" title="Linki Print">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
                 <img src="https://api.iconify.design/streamline-ultimate-color:print-text.svg" alt="Linki Print">
             </button>
             <div class="vertical-separator orange"></div>
             <button class="datetime-nav-button e" onclick="window.open('https://exd9.carrd.co/', '_blank')" title="Lista Ewakuacji">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
                 <img src="https://api.iconify.design/streamline-ultimate-color:multiple-users-1.svg" alt="Users">
             </button>
         </div>
@@ -475,6 +499,18 @@ function createLinkButton(title, markerColor, icon, url) {
     if (title.includes("AAP")) {
         div.classList.add("aap-button");
     }
+    if (title.includes("M365")) {
+        div.classList.add("m365-button");
+    }
+    if (title.includes("OUTLOOK")) {
+        div.classList.add("outlook-button");
+    }
+    if (title.includes("SLACK")) {
+        div.classList.add("slack-button");
+    }
+    if (title.includes("Markdown")) {
+        div.classList.add("markdown-button");
+    }
 
     const markerClasses = markerColor ? `marker marker-${markerColor}` : "";
 
@@ -486,7 +522,7 @@ function createLinkButton(title, markerColor, icon, url) {
         } else if (title.includes("QUIP")) {
             iconHTML = `<span class="link-button-icon"><img src="https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://quip.com&size=32" alt="Quip"></span>`;
         } else if (title.includes("EXCEL IN")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/vscode-icons:file-type-excel.svg" alt="Excel"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-excel-2025.png" alt="Excel"></span>`;
         } else if (title.includes("OUTBOUND")) {
             iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:shipment-tracking.svg" alt="Outbound"></span>`;
         } else if (title.includes("GTDR")) {
@@ -523,6 +559,14 @@ function createLinkButton(title, markerColor, icon, url) {
             iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/vscode-icons:file-type-befunge.svg" alt="FCLM Portal"></span>`;
         } else if (title.includes("AAP")) {
             iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:app-window-code.svg" alt="AAP"></span>`;
+        } else if (title.includes("M365")) {
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-copilot.png" alt="M365"></span>`;
+        } else if (title.includes("OUTLOOK")) {
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-outlook-2025.png" alt="Outlook"></span>`;
+        } else if (title.includes("SLACK")) {
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/color-glass/48/slack-new.png" alt="Slack"></span>`;
+        } else if (title.includes("Markdown")) {
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/pulsar-color/96/markdown.png" alt="Markdown"></span>`;
         } else {
             iconHTML = `<span class="link-button-icon"><i class="fas ${icon}"></i></span>`;
         }
@@ -894,7 +938,7 @@ function navigateToSubpage() {
         <div class="info-section">
             <h3>Przydatne informacje:</h3>
             <ul>
-                <li><span class="highlight">uBlock Origin</span> - Najlepszy bloker reklam, redukuje zużycie danych i przyspiesza przeglądanie</li>
+                <li><span class="highlight">uBlock Origin Lite</span> - Najlepszy bloker reklam, redukuje zużycie danych i przyspiesza przeglądanie</li>
                 <li><span class="highlight">Dark Reader</span> - Automatycznie zmienia jasne strony na ciemne, oszczędza baterie</li>
                 <li><span class="highlight">Stylus</span> - Pozwala na personalizację wyglądu stron internetowych</li>
                 <li><span class="highlight">Tampermonkey</span> - Umożliwia uruchamianie skryptów modyfikujących strony</li>
