@@ -124,15 +124,26 @@ class DateTime {
 
         // Always show theme toggle and navigation - no authentication required
         const controlsInfo = `<div class="user-info">
-            <button class="datetime-nav-button " onclick="toggleUserTheme()" id="userThemeToggle" title="Theme">
+            <button class="datetime-nav-button" onclick="toggleUserTheme()" id="userThemeToggle" title="Theme">
                 <div class="corner top-left"></div>
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <span class="theme-toggle-icon">
-                    ${this.themeToggle.isDark
-                ? '<img src="https://api.iconify.design/line-md:sunny-twotone-loop.svg" alt="Light Mode">'
-                : '<img src="https://api.iconify.design/line-md:sunny-outline-to-moon-loop-transition.svg" alt="Dark Mode">'}
+                <span class="theme-toggle-icon icon-holder">
+                    <img 
+                        src="${this.themeToggle.isDark
+                ? 'https://api.iconify.design/line-md:sunny-twotone-loop.svg'
+                : 'https://api.iconify.design/line-md:sunny-outline-to-moon-loop-transition.svg'
+            }"
+                        alt="${this.themeToggle.isDark ? 'Tryb jasny' : 'Tryb ciemny'}"
+                        class="nav-img"
+                        onerror="this.style.display='none';this.parentElement.querySelector('.fas')?.classList.remove('hidden');"
+                    >
+                    <i 
+                        class="fas ${this.themeToggle.isDark ? 'fa-sun' : 'fa-moon'} hidden"
+                        title="${this.themeToggle.isDark ? 'Tryb jasny (ikona awaryjna)' : 'Tryb ciemny (ikona awaryjna)'}"
+                        style="font-size: 1.35em;"
+                    ></i>
                 </span>
             </button>
             <button class="datetime-nav-button" onclick="navigateToSubpage()" title="Narzędzia">
@@ -140,14 +151,30 @@ class DateTime {
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <img src="https://api.iconify.design/material-icon-theme:folder-plugin-open.svg" alt="Tools">
+                <span class="icon-holder">
+                    <img 
+                        src="https://api.iconify.design/material-icon-theme:folder-plugin-open.svg"
+                        alt="Tools"
+                        class="nav-img"
+                        onerror="this.style.display='none';this.parentElement.querySelector('.fas')?.classList.remove('hidden');"
+                    >
+                    <i class="fas fa-tools hidden" title="Tools (FAS backup)" style="font-size: 1.2em;"></i>
+                </span>
             </button>
             <button class="datetime-nav-button" onclick="showLoginConsole()" title="Open Login Console (Ctrl+L)">
                 <div class="corner top-left"></div>
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <img src="https://img.icons8.com/external-anggara-flat-anggara-putra/64/external-password-security-security-anggara-flat-anggara-putra.png" alt="Console">
+                <span class="icon-holder">
+                    <img 
+                        src="https://img.icons8.com/external-anggara-flat-anggara-putra/64/external-password-security-security-anggara-flat-anggara-putra.png"
+                        alt="Console"
+                        class="nav-img"
+                        onerror="this.style.display='none';this.parentElement.querySelector('.fas')?.classList.remove('hidden');"
+                    >
+                    <i class="fas fa-user-lock hidden" title="Console (FAS backup)" style="font-size: 1.2em;"></i>
+                </span>
             </button>
             <div class="vertical-separator orange"></div>
             <button class="datetime-nav-button" onclick="window.open('https://playliveos.carrd.co/', '_blank')" title="Visit PlayLiveOS">
@@ -155,7 +182,15 @@ class DateTime {
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <img src="https://img.icons8.com/papercut/60/audio-wave2.png" alt="Music">
+                <span class="icon-holder">
+                    <img 
+                        src="https://img.icons8.com/papercut/60/audio-wave2.png"
+                        alt="Music"
+                        class="nav-img"
+                        onerror="this.style.display='none';this.parentElement.querySelector('.fas')?.classList.remove('hidden');"
+                    >
+                    <i class="fas fa-music hidden" title="Music (FAS backup)" style="font-size: 1.2em;"></i>
+                </span>
             </button>
             <div class="vertical-separator orange"></div>
             <button class="datetime-nav-button" onclick="window.open('https://quip.com/mlWpALvnGSt5/Pliki', '_blank')" title="Linki Print">
@@ -163,7 +198,15 @@ class DateTime {
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <img src="https://api.iconify.design/streamline-ultimate-color:print-text.svg" alt="Linki Print">
+                <span class="icon-holder">
+                    <img 
+                        src="https://api.iconify.design/streamline-ultimate-color:print-text.svg"
+                        alt="Linki Print"
+                        class="nav-img"
+                        onerror="this.style.display='none';this.parentElement.querySelector('.fas')?.classList.remove('hidden');"
+                    >
+                    <i class="fas fa-print hidden" title="Linki Print (FAS backup)" style="font-size: 1.2em;"></i>
+                </span>
             </button>
             <div class="vertical-separator orange"></div>
             <button class="datetime-nav-button e" onclick="window.open('https://exd9.carrd.co/', '_blank')" title="Lista Ewakuacji">
@@ -171,7 +214,15 @@ class DateTime {
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div class="corner bottom-right"></div>
-                <img src="https://api.iconify.design/streamline-ultimate-color:multiple-users-1.svg" alt="Users">
+                <span class="icon-holder">
+                    <img 
+                        src="https://api.iconify.design/streamline-ultimate-color:multiple-users-1.svg"
+                        alt="Users"
+                        class="nav-img"
+                        onerror="this.style.display='none';this.parentElement.querySelector('.fas')?.classList.remove('hidden');"
+                    >
+                    <i class="fas fa-users hidden" title="Users (FAS backup)" style="font-size: 1.2em;"></i>
+                </span>
             </button>
         </div>
         `;
@@ -518,55 +569,55 @@ function createLinkButton(title, markerColor, icon, url) {
     let iconHTML = "";
     if (icon) {
         if (title.includes("CHAT OPS")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-sharp-color:desktop-chat-flat.svg" alt="Chat Ops"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-sharp-color:desktop-chat-flat.svg" alt="Chat Ops" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-comments\\'></i>');"></span>`;
         } else if (title.includes("QUIP")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://quip.com&size=32" alt="Quip"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://quip.com&size=32" alt="Quip" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-clipboard\\'></i>');"></span>`;
         } else if (title.includes("EXCEL IN")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-excel-2025.png" alt="Excel"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-excel-2025.png" alt="Excel" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-file-excel\\'></i>');"></span>`;
         } else if (title.includes("OUTBOUND")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:shipment-tracking.svg" alt="Outbound"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:shipment-tracking.svg" alt="Outbound" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-truck\\'></i>');"></span>`;
         } else if (title.includes("GTDR")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/emojione:mobile-phone.svg" alt="GTDR"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/emojione:mobile-phone.svg" alt="GTDR" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-mobile-alt\\'></i>');"></span>`;
         } else if (title.includes("DEVICE ACTIVATION")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/openmoji:mobile-info.svg" alt="Device Activation"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/openmoji:mobile-info.svg" alt="Device Activation" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-mobile\\'></i>');"></span>`;
         } else if (title.includes("PASSWORD RESET")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:laptop-user.svg" alt="Password Reset"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:laptop-user.svg" alt="Password Reset" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-unlock-alt\\'></i>');"></span>`;
         } else if (title.includes("PANORAMA")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/noto:bar-chart.svg" alt="Panorama"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/noto:bar-chart.svg" alt="Panorama" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-chart-bar\\'></i>');"></span>`;
         } else if (title.includes("YARD 360")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:delivery-truck-clock.svg" alt="Yard 360"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:delivery-truck-clock.svg" alt="Yard 360" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-clock\\'></i>');"></span>`;
         } else if (title.includes("SEZAM")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:truck-empty-1.svg" alt="Sezam"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:truck-empty-1.svg" alt="Sezam" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-truck-moving\\'></i>');"></span>`;
         } else if (title.includes("YARD MANAGEMENT")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:network-pin.svg" alt="Yard Management"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:network-pin.svg" alt="Yard Management" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-map-marker-alt\\'></i>');"></span>`;
         } else if (title.includes("EVENT HISTORY")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:calendar-date.svg" alt="Event History"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:calendar-date.svg" alt="Event History" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-calendar-alt\\'></i>');"></span>`;
         } else if (title.includes("DOCKMASTER SEARCH")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:shipment-search.svg" alt="Dockmaster Search"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:shipment-search.svg" alt="Dockmaster Search" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-search\\'></i>');"></span>`;
         } else if (title.includes("DOCKMASTER")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:shipment-clock.svg" alt="Dockmaster"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:shipment-clock.svg" alt="Dockmaster" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-clock\\'></i>');"></span>`;
         } else if (title.includes("ISSUES")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:professions-man-construction-2.svg" alt="Issues"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:professions-man-construction-2.svg" alt="Issues" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-exclamation-circle\\'></i>');"></span>`;
         } else if (title.includes("PERMISSIONS")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:multiple-neutral-2.svg" alt="Permissions"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:multiple-neutral-2.svg" alt="Permissions" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-users-cog\\'></i>');"></span>`;
         } else if (title.includes("CONSOLE HARMONY")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/vscode-icons:file-type-ai2.svg" alt="Console Harmony"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/vscode-icons:file-type-ai2.svg" alt="Console Harmony" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-cogs\\'></i>');"></span>`;
         } else if (title.includes("FMC TRACK")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:delivery-truck-cargo.svg" alt="FMC Track"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:delivery-truck-cargo.svg" alt="FMC Track" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-truck-loading\\'></i>');"></span>`;
         } else if (title.includes("FMC")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:antenna.svg" alt="FMC"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:antenna.svg" alt="FMC" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-broadcast-tower\\'></i>');"></span>`;
         } else if (title.includes("FCLM PORTAL")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/vscode-icons:file-type-befunge.svg" alt="FCLM Portal"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/vscode-icons:file-type-befunge.svg" alt="FCLM Portal" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-warehouse\\'></i>');"></span>`;
         } else if (title.includes("AAP")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:app-window-code.svg" alt="AAP"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://api.iconify.design/streamline-ultimate-color:app-window-code.svg" alt="AAP" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fas fa-code\\'></i>');"></span>`;
         } else if (title.includes("M365")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-copilot.png" alt="M365"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-copilot.png" alt="M365" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fab fa-microsoft\\'></i>');"></span>`;
         } else if (title.includes("OUTLOOK")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-outlook-2025.png" alt="Outlook"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/fluency/48/microsoft-outlook-2025.png" alt="Outlook" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fab fa-microsoft\\'></i>');"></span>`;
         } else if (title.includes("SLACK")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/color-glass/48/slack-new.png" alt="Slack"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/color-glass/48/slack-new.png" alt="Slack" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fab fa-slack\\'></i>');"></span>`;
         } else if (title.includes("Markdown")) {
-            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/pulsar-color/96/markdown.png" alt="Markdown"></span>`;
+            iconHTML = `<span class="link-button-icon"><img src="https://img.icons8.com/pulsar-color/96/markdown.png" alt="Markdown" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<i class=\\'fab fa-markdown\\'></i>');"></span>`;
         } else {
             iconHTML = `<span class="link-button-icon"><i class="fas ${icon}"></i></span>`;
         }
@@ -844,7 +895,7 @@ function updateThemeColor(isDarkMode) {
 function updateAllThemeButtons(theme) {
     const isDark = theme === "dark";
 
-    // Update login theme button
+    // Update login theme button (fallback icon is always FAS)
     const loginButton = document.getElementById("loginThemeToggle");
     if (loginButton) {
         const icon = loginButton.querySelector("i");
@@ -853,14 +904,31 @@ function updateAllThemeButtons(theme) {
         }
     }
 
-    // Update user theme button with SVG icons
+    // Update user theme button with SVG icons and FAS fallback
     const userButton = document.getElementById("userThemeToggle");
     if (userButton) {
         const iconContainer = userButton.querySelector(".theme-toggle-icon");
         if (iconContainer) {
-            iconContainer.innerHTML = isDark
-                ? '<img src="https://api.iconify.design/line-md:sunny-twotone-loop.svg" alt="Light Mode">'
-                : '<img src="https://api.iconify.design/line-md:sunny-outline-to-moon-loop-transition.svg" alt="Dark Mode">';
+            iconContainer.innerHTML =
+                isDark
+                    ? `
+                    <img 
+                        src="https://api.iconify.design/line-md:sunny-twotone-loop.svg" 
+                        alt="Light Mode"
+                        class="nav-img"
+                        onerror="this.style.display='none';this.parentElement.querySelector('.fas')?.classList.remove('hidden');"
+                    >
+                    <i class="fas fa-sun hidden" title="Awaryjna ikona jasnego motywu" style="font-size: 1.35em;"></i>
+                  `
+                    : `
+                    <img 
+                        src="https://api.iconify.design/line-md:sunny-outline-to-moon-loop-transition.svg" 
+                        alt="Dark Mode"
+                        class="nav-img"
+                        onerror="this.style.display='none';this.parentElement.querySelector('.fas')?.classList.remove('hidden');"
+                    >
+                    <i class="fas fa-moon hidden" title="Awaryjna ikona ciemnego motywu" style="font-size: 1.35em;"></i>
+                  `;
         }
     }
 }
@@ -871,10 +939,20 @@ function navigateToSubpage() {
     const addons = window.addonsUtils.getRecommendations();
 
     // Generate browser icons mapping
+    // SVG (Iconify) + fallback FAS classes for browser icons
     const browserIcons = {
-        firefox: 'https://api.iconify.design/devicon:firefox.svg',
-        edge: 'https://api.iconify.design/logos:microsoft-edge.svg',
-        chrome: 'https://api.iconify.design/devicon:chrome.svg'
+        firefox: {
+            svg: 'https://api.iconify.design/devicon:firefox.svg',
+            fas: 'fa-firefox-browser'
+        },
+        edge: {
+            svg: 'https://api.iconify.design/logos:microsoft-edge.svg',
+            fas: 'fa-edge'
+        },
+        chrome: {
+            svg: 'https://api.iconify.design/devicon:chrome.svg',
+            fas: 'fa-chrome'
+        }
     };
 
     // Generate addon items HTML
@@ -884,12 +962,22 @@ function navigateToSubpage() {
         let browserBadgesHTML = '';
         if (addon.browsers) {
             for (const [browser, url] of Object.entries(addon.browsers)) {
-                const browserIcon = browserIcons[browser] || '';
-                const browserName = browser.charAt(0).toUpperCase() + browser.slice(1);
+                const iconInfo = browserIcons[browser];
+                const browserName =
+                    browser.charAt(0).toUpperCase() + browser.slice(1);
                 browserBadgesHTML += `
-                    <a href="${url}" class="browser-badge ${browser}" target="_blank" title="${browserName}">
-                        <img src="${browserIcon}" alt="${browserName}" width="24" height="24">
-                    </a>`;
+                    <a href="${url}" class="browser-badge ${browser}" target="_blank" rel="noopener" title="${browserName}">
+                        ${iconInfo
+                        ? `<img src="${iconInfo.svg}" alt="${browserName}" width="24" height="24"
+                                   onerror="this.style.display='none';this.parentElement.querySelector('i')?.classList.remove('hidden');">`
+                        : ''
+                    }
+                        ${iconInfo
+                        ? `<i class="fab ${iconInfo.fas} hidden" title="${browserName} (ikona zapasowa)" style="font-size:1.1em;"></i>`
+                        : ''
+                    }
+                    </a>
+                `;
             }
         }
 
