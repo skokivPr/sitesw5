@@ -68,10 +68,10 @@ const addonsConfig = {
         },
         {
             name: "ToolCopy Side Panel",
-            description: "Panel boczny z narzędziami do kopiowania",
-            icon: "https://lh3.googleusercontent.com/1qjWHKE6mHD9MrIIlR_8oBbnkHOU18CE3ULOolM6pnNccUkaLgz2bjqvHS28bb8_Z4RaghJcMa-8rQMC_63fmydv3_c=s60",
+            description: "Panel boczny z narzędziami do kopiowania 7.2.0",
+            icon: "https://lh3.googleusercontent.com/V1qwCr4otcTktfbao_LOh8rmEEJFgKkC-_zs1CIq777OXwrkMGK5B9-xTfGiRPv9kVNUyxgVTKPH5DHA9ko0rIwZ8w=s60",
             browsers: {
-                chrome: "https://chromewebstore.google.com/detail/toolcopy-side-panel/daloeclobodboapolliolbmjnhhgpgea?authuser=0&hl=pl"
+                chrome: "https://chromewebstore.google.com/detail/jodihmcbnjkpdkkbepgamfahijcjpolj?utm_source=item-share-cb"
             }
         },
         {
@@ -110,3 +110,4 @@ const addonsUtils = {
 // Make available globally
 window.addonsConfig = addonsConfig;
 window.addonsUtils = addonsUtils; 
+
